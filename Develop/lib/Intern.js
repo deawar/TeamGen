@@ -5,3 +5,16 @@
 //  method ->  getSchool() returning string school
 //  method ->  get getRole() to return Intern
 //  export  module.exports = Engineer;
+class Intern extends Employee {
+    constructor(name, id, email, school) {
+        super(name, id, email);
+        this.school = school;
+    }
+    getRole() {
+        return "Intern";    
+    }
+    getSchool() {
+        return this.school;
+    }
+}
+module.exports = Intern;

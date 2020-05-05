@@ -5,3 +5,16 @@
 //  method ->  getRole() returning string Manager
 //  method ->  get officeNumber() retunring officeNumber
 //  export  module.exports = Manager;
+class Manager extends Employee {
+    constructor(name, id, email, officeNumber) {
+        super(name, id, email);
+        this.officeNumber = officeNumber;
+    }
+    getRole() {
+        return "Manager";    
+    }
+    getOfficeNumber() {
+        return this.officeNumber;
+    }
+}
+module.exports = Manager;

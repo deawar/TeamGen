@@ -1,7 +1,7 @@
 {
   "name": "unit10hw",
   "version": "1.0.0",
-  "description": "OOP and testing for week 10 homework",
+  "description": "TeamGen CLI App",
   "main": "app.js",
   "directories": {
     "lib": "lib",
