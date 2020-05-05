@@ -1,0 +1,7 @@
+// TODO: Write code to define and export the Engineer class.  HINT: This class should inherit from Employee.
+//  Require  Employee Class
+//  create Engineer class extended from Employee class
+//  with {name, id, email, github*} *github username
+//  method ->  getgitHub() returning string GitHub username
+//  method ->  get getRole() to return Engineer
+//  export  module.exports = Engineer;
