@@ -5,6 +5,7 @@
 //  method ->  getgitHub() returning string GitHub username
 //  method ->  get getRole() to return Engineer
 //  export  module.exports = Engineer;
+const Employee = require("./Employee");
 class Engineer extends Employee {
     constructor(name, id, email, github) {
         super(name, id, email);

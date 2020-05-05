@@ -5,6 +5,7 @@
 //  method ->  getSchool() returning string school
 //  method ->  get getRole() to return Intern
 //  export  module.exports = Engineer;
+const Employee = require("./Employee");
 class Intern extends Employee {
     constructor(name, id, email, school) {
         super(name, id, email);
