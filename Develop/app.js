@@ -76,7 +76,7 @@ const employeeQues = [
                         if (err){
                             console.log(err);
                         }
-                    }
+                    });
                 } else if (page === true) {
                     fs.writeFile(outputPath, html, (err) => {
                         if (err) {
@@ -84,13 +84,14 @@ const employeeQues = [
                         }
                     })
                 }
-
+            } 
                 console.log("Ok, Thanks for using TeamGen. Exiting Program...");
-            }
+             
         } catch (err) {
             console.log(err)
         }
     }
+           
 
 
 
