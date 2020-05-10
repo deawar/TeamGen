@@ -84,7 +84,7 @@ const employeeQues = [
         validate: async (input) => {
             if (await input.trim().length === 0) {
                 return "NOT a valid entry!";
-            } else if (input.match(/^[0-9a-zA-Z]+$/i)) {
+            } else if (input.match(/^[a-z\d](?:[a-z\d]|-(?=[a-z\d])){0,38}$/i)) {
                 return true;
             } else {
                 return "Please enter a valid GitHub Username!"
