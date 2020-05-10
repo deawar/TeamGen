@@ -40,6 +40,5 @@ node Develop/app.js
 ## Dependencies  
 * email-validator
 * inquirer
-* chalk
 ## Questions 
 ![Dean Warren](https://avatars3.githubusercontent.com/u/15312495?v=4&s=48)  Email: [Dean Warren](mailto:deawar@gmail.com) or  click on [@Dean Warren](https://github.com/deawar)
