@@ -138,7 +138,7 @@ const employeeQues = [
                 init();
             } else {
                 employees = [...manager, ...engineer, ...intern];
-                console.log("**************Input**************: ",employees)
+                //console.log("**************Input**************: ",employees)
                 let html = render(employees);
                 let page = fs.existsSync(OUTPUT_DIR) 
                 
