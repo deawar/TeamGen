@@ -3,7 +3,7 @@
 [![GitHub issues](https://img.shields.io/github/issues/deawar/TeamGen?style=plastic)](undefined/network)[![GitHub forks](https://img.shields.io/github/forks/deawar/TeamGen?style=plastic)](undefined/network)[![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-v2.0%20adopted-ff69b4.svg?style=plastic)](code_of_conduct.md) 
 ## Description  
   A CLI application to quickly create a webpage for my team that includes a manager, engineers and interns. This application will have their contact info readily available and do so in a clean easy to read format. When a manager wants to create a team resource Then they can use this app to generate a web page after entering their teams information.  
-  [![App gif](https://github.com/deawar/TeamGen/tree/master/Assets/teamGen.gif)
+  [![App gif](https://github.com/deawar/TeamGen/blob/master/Assets/TeamGen.gif)
 
 ## Table of Contents  
 * [Installation](#installation)  
