@@ -2,12 +2,16 @@ const Manager = require("./lib/Manager");
 const Engineer = require("./lib/Engineer");
 const Intern = require("./lib/Intern");
 const inquirer = require("inquirer");
+const validator = require("email-validator");
 const path = require("path");
 const fs = require("fs");
 const OUTPUT_DIR = path.resolve(__dirname, "output");
 const outputPath = path.join(OUTPUT_DIR, "team.html");
 const render = require("./lib/htmlRenderer");
-const employees = [];
+let employees = [];
+let manager = [];
+let engineer = [];
+let intern = [];
 
 
 const employeeQues = [
@@ -22,37 +26,85 @@ const employeeQues = [
         type: "input",
         message: "What is the Employee's name?",
         name: "name",
-        when: (employeeQues) => employeeQues.role !== "Done"
+        when: (employeeQues) => employeeQues.role !== "Done",
+        validate: async (input) => {
+            if (await input.trim().length === 0) {
+                return "NOT a valid entry! Please try again.";
+            } else if (input.match(/^[a-zA-Z]+( [a-zA-Z]+)*$/i)) {
+                return true;
+            } else {
+                return "Not a valid entry brah!"
+            }
+        }
     },
     {
         type: "input",
-        message: "What is the Employee's id?",
+        message: "What is the Employee's id(Numbers only)?",
         name: "id",
-        when: (employeeQues) => employeeQues.role !== "Done"
+        when: (employeeQues) => employeeQues.role !== "Done",
+        validate: async (input) => {
+            if (input.match(/^[0-9]+$/i)) {
+                return true;
+            } else {
+                return "Not valid. Enter ID number."
+            }
+        }
     },
     {
         type: "input",
         message: "What is the Employee's email?",
         name: "email",
-        when: (employeeQues) => employeeQues.role !== "Done"
+        when: (employeeQues) => employeeQues.role !== "Done",
+        validate: async (input) => {
+            if (input.match(/^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$/i)) {
+                return true;
+            } else {
+                return "Not a valid email address."
+            }
+        }    
     },
     {
         type: "input",
         message: "What is your Office Number?",
         name: "officeNumber",
-        when: (employeeQues) => employeeQues.role === 'Manager'
+        when: (employeeQues) => employeeQues.role === 'Manager',
+        validate: async (input) => {
+            if (input.match(/^[0-9]+$/i)) {
+                return true;
+            } else {
+                return "Not valid. Enter office number."
+            }
+        }
     },
     {
         type: "input",
         message: "What is your GitHub Username?",
         name: "github",
-        when: (employeeQues) => employeeQues.role === 'Engineer'
+        when: (employeeQues) => employeeQues.role === 'Engineer',
+        validate: async (input) => {
+            if (await input.trim().length === 0) {
+                return "NOT a valid entry!";
+            } else if (input.match(/^[a-zA-Z]+( [a-zA-Z]+)*$/i)) {
+                return true;
+            } else {
+                return "Please enter a valid GitHub Username!"
+            }
+        }
     },
     {
         type: "input",
         message: "What school are you affilated with?",
         name: "school",
-        when: (employeeQues) => employeeQues.role === 'Intern'
+        when: (employeeQues) => employeeQues.role === 'Intern',
+        validate: async (input) => {
+            if (await input.trim().length === 0) {
+                return "not valid entry brah!";
+            } else if (input.match(/^[a-zA-Z]+( [a-zA-Z]+)*$/i)) {
+                return true;
+            } else {
+                return "Not a valid entry! A-Z, a-z only please."
+            }
+        }
     }
 ];
 
@@ -62,11 +114,30 @@ const employeeQues = [
             employees.push(input);
             
             if (input.role !== "Done") {
-               
+                if (input.role === "Manager"){
+                    let man = new Manager(input.name, input.id, input.email, input.officeNumber); 
+                    console.log("line 119: after create manager:", input);
+                    console.log("line 120: also after create manager:", man);
+                    manager.push(man);
+                }
+                else if (input.role === "Engineer") {
+                    let eng = new Engineer(input.name, input.id, input.email, input.github);
+                    engineer.push(eng);
+                    console.log ("Created Engineer: ",engineer);
+                //engineer = new Engineer[(input.name, input.id, input.email, input.github)];
+                console.log("New engineer:",engineer);
+                }
+                else{
+                    let inte = new Intern(input.name, input.id, input.email, input.school);
+                        intern.push(inte);
+                        console.log ("Created Intern: ",intern);
+                }
+
                 //employees.push(input);
-                console.log ("Array of Employees: ", employees);
+                console.log ("Line 180 for now \nArray of Employees: ", employees);
                 init();
             } else {
+                employees = [...manager, ...engineer, ...intern];
                 console.log("**************Input**************: ",employees)
                 let html = render(employees);
                 let page = fs.existsSync(OUTPUT_DIR) 
@@ -82,7 +153,7 @@ const employeeQues = [
                         if (err) {
                             console.log(err);
                         }
-                    })
+                    });
                 }
             } 
                 console.log("Ok, Thanks for using TeamGen. Exiting Program...");
