@@ -84,7 +84,7 @@ const employeeQues = [
         validate: async (input) => {
             if (await input.trim().length === 0) {
                 return "NOT a valid entry!";
-            } else if (input.match(/^[a-zA-Z]+( [a-zA-Z]+)*$/i)) {
+            } else if (input.match(/^[0-9a-zA-Z]+$/i)) {
                 return true;
             } else {
                 return "Please enter a valid GitHub Username!"
@@ -135,6 +135,7 @@ const employeeQues = [
 
                 //employees.push(input);
                 console.log ("Line 180 for now \nArray of Employees: ", employees);
+                console.clear();
                 init();
             } else {
                 employees = [...manager, ...engineer, ...intern];
