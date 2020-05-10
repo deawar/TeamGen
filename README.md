@@ -12,9 +12,16 @@
 * [Questions](#questions) 
   
 ## Installation  
+ 
+Download from GitHub repository using:  
+```
+git clone git@github.com:deawar/TeamGen.git
 ``` 
-Dwonload from GitHub repository using `git clone git@github.com:deawar/TeamGen.git` then `npm install`. 
+then 
+```
+npm install
 ``` 
+
 ## Usage  
 ``` 
 node Develop/app.js 
