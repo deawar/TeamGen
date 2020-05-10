@@ -83,7 +83,7 @@ const employeeQues = [
         when: (employeeQues) => employeeQues.role === 'Engineer',
         validate: async (input) => {
             if (await input.trim().length === 0) {
-                return "NOT a valid entry!";
+                return "NOT a valid entry!"; //Reg X for GitHub names from https://github.com/shinnn/github-username-regex/blob/master/module.js
             } else if (input.match(/^[a-z\d](?:[a-z\d]|-(?=[a-z\d])){0,38}$/i)) {
                 return true;
             } else {
@@ -110,6 +110,8 @@ const employeeQues = [
 
     const getUserInput = async () => {
         try {
+            console.clear();
+            console.log("Team Gen");
             const input = await inquirer.prompt(employeeQues);
             employees.push(input);
             
@@ -156,8 +158,9 @@ const employeeQues = [
                         }
                     });
                 }
-            } 
+                console.log("Your Team.html file has been generated and is in ",outputPath);
                 console.log("Ok, Thanks for using TeamGen. Exiting Program...");
+            } 
              
         } catch (err) {
             console.log(err)
@@ -208,7 +211,6 @@ const employeeQues = [
     // for the provided `render` function to work!```
     function init() {
         console.clear();
-        console.log("Team Gen");
         getUserInput();
     }
 init()
